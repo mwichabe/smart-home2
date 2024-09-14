@@ -19,6 +19,14 @@ const Customers = () => {
   const [userAddress, setUserAddress] = useState("");
   const [creditCard, setCreditCard] = useState("");
   const [showForm, setShowForm] = useState(false);
+  const [name, setName] = useState('');
+  useEffect(() => {
+    const storedUserName = localStorage.getItem('userName');
+    if (storedUserName) {
+      setName(storedUserName);
+    }
+  }, []);
+  
 
   useEffect(() => {
     const products = getProducts();
@@ -89,7 +97,7 @@ const Customers = () => {
       </div>
       <div className="col">
         <h1>
-          Customer Dashboard
+          Welcome, Customer {name} !
         </h1>
         <h2 className="my-5">
           There are {filtered.length}{" "}

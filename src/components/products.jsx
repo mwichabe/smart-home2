@@ -20,6 +20,14 @@ const Products = () => {
   const [creditCard, setCreditCard] = useState("");
   const [showForm, setShowForm] = useState(false);
 
+  const [name, setName] = useState('');
+  useEffect(() => {
+    const storedUserName = localStorage.getItem('userName');
+    if (storedUserName) {
+      setName(storedUserName);
+    }
+  }, []);
+
   useEffect(() => {
     const products = getProducts();
     const categories = [{ _id: "", name: "All Categories" }, ...getCategories()];
@@ -101,9 +109,9 @@ const Products = () => {
         }
       </div>
       <div className="col">
-        <h1>
-          Sales Manager Dashboard
-        </h1>
+        <h3>
+          Welcome, Store Manager {name}!
+        </h3>
         <h2 className="my-5">
           There are {filtered.length}{" "}
           {selectedCategory.name === "All Categories" ? "" : selectedCategory.name}{" "}

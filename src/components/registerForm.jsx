@@ -38,6 +38,9 @@ export default class RegisterForm extends Form {
     }
     this.context.setUser({ name: this.state.data.name, userType: this.state.data.userType });
     this.context.user = { name: this.state.data.name, userType: this.state.data.userType };
+  
+    // Store user name in local storage
+    localStorage.setItem('userName', this.state.data.name);
   };
 
   render() {

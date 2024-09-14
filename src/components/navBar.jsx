@@ -1,10 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState  } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { UserContext} from '../context/userContext';
 
 const NavBar = () => {
   const { user } = useContext(UserContext);
-  console.log(user);
 
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light mb-5'>
