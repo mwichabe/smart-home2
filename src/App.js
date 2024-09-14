@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Products from "./components/products";
+import "./App.css";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import Customers from "./components/customers";
+import ProductForm from "./components/productForm";
+import Sales from "./components/sales";
+import NotFound from "./components/notFound";
+import NavBar from "./components/navBar";
+import LoginForm from "./components/loginForm";
+import RegisterForm from "./components/registerForm";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <NavBar />
+      <div className="container">
+        <Routes>
+          <Route path="/products/:id" element={<ProductForm />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/customers" element={<Customers />} />
+          <Route path="/productForm" element={<ProductForm />} />
+          <Route path="/sales" element={<Sales />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/register" element={<RegisterForm />} />
+          <Route path="/notFound" element={<NotFound />} />
+          <Route path="/" element={<Navigate to="/register" replace />} />
+          <Route path="*" element={<Navigate to="/notFound" replace />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
